@@ -1,7 +1,6 @@
 
 import Product from "./components/Product"
 import "slick-carousel/slick/slick.css";
-import Test from "./components/Test"
 import RootLayouts from "./components/RootLayouts"
 
 import {
@@ -12,6 +11,8 @@ import {
 } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage"
 import Signup from "./pages/Signup"
+import Shop from "./pages/Shop";
+import Home from "./pages/Home";
 
 
 const router = createBrowserRouter(
@@ -21,13 +22,14 @@ const router = createBrowserRouter(
         path="/"
         element={<RootLayouts />}
       >
+        
         <Route
           path="/"
-          element={<Test />}
+          element={<Home/>}
         ></Route>
         <Route
-          path="/my"
-          element={<Product />}
+          path="/shop"
+          element={<Shop/>}
         ></Route>
         <Route
           path="/sign-up"
