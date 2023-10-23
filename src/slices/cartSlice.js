@@ -25,8 +25,26 @@ export const cartSlice = createSlice({
         state.cartItem.push(actions.payload)
       }
     },
+    Encrement: (state,actions) =>{
+      state.cartItem.map((item)=>{
+        if(item.title == actions.payload.title){
+          item.quantity = item.quantity + 1
+        }
+      })
+    },
+    Decrement: (state,actions)=>{
+      state.cartItem.map((item,index)=>{
+        if(item.title == actions.payload.title){
+          if(item.quantity > 1){
+            item.quantity = item.quantity -1
+          }else{
+            state.cartItem.splice(index,1)
+          }
+        }
+      })
+    },
   },
 })
-export const { addTocart } = cartSlice.actions
+export const { addTocart,Encrement,Decrement } = cartSlice.actions
 
 export default cartSlice.reducer
