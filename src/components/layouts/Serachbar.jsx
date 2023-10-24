@@ -6,8 +6,9 @@ import {BiSolidUser} from "react-icons/bi"
 import {RxTriangleDown} from "react-icons/rx"
 import {AiOutlineSearch} from "react-icons/ai"
 import {FaRegWindowClose} from "react-icons/fa"
+import {MdDeleteForever} from "react-icons/md"
 import { useSelector,useDispatch } from 'react-redux'
-import { Encrement,Decrement } from '../../slices/cartSlice'
+import { Encrement,Decrement,removeFromCart } from '../../slices/cartSlice'
 
 const Serachbar = () => {
 
@@ -24,6 +25,8 @@ const Serachbar = () => {
   let handleDecrement = (item)=>{
     dispatch(Decrement(item))
   }
+
+  
 
   return (
     <section className='bg-ash py-10'>
@@ -49,15 +52,16 @@ const Serachbar = () => {
           <FaRegWindowClose onClick={()=>setOpen(false)} className='text-2xl cursor-pointer ml-1 mb-4'/>
 
           <ul className='bg-ash text-black py-5 px-2 flex justify-between'>
-            <li>Product</li>
+            <li className='ml-8'>Product</li>
             <li>Price</li>
             <li>Quantity</li>
             <li>Total</li>
           </ul>
           {
             cart.map(item=>(
-              <ul key={item.title} className='flex justify-between'>
-                <li>{item.title}</li>
+              <ul key={item.title} className='flex justify-between relative'>
+                <li className=' bg-red-500 absolute left-0 top-1 text-white mr-2 hover:bg-red-700 cursor-pointer' onClick={()=>dispatch(removeFromCart(item))}><MdDeleteForever/></li>
+                <li className='ml-[65px]'>{item.title}</li>
                 <li>{item.price}</li>
                 <li>
                 <button className='mr-3 text-2xl' onClick={()=>handleDecrement(item)}>-</button>

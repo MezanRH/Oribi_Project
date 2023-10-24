@@ -43,8 +43,17 @@ export const cartSlice = createSlice({
         }
       })
     },
+    removeFromCart:(state,action)=>{
+      console.log(action.payload.title)
+      state.cartItem.map((item,index)=>{
+        if(action.payload.title == item.title){
+          state.cartItem.splice(index,1)
+        }
+        
+      })
+    },
   },
 })
-export const { addTocart,Encrement,Decrement } = cartSlice.actions
+export const { addTocart,Encrement,Decrement,removeFromCart } = cartSlice.actions
 
 export default cartSlice.reducer
