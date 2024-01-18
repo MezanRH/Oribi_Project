@@ -48,7 +48,7 @@ const Serachbar = () => {
           </Flex>
         </Flex>
         {open &&
-        <div className='w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-10'>
+        <div className='w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-30'>
           <FaRegWindowClose onClick={()=>setOpen(false)} className='text-2xl cursor-pointer ml-1 mb-4'/>
 
           <ul className='bg-ash text-black py-5 px-2 flex justify-between'>
